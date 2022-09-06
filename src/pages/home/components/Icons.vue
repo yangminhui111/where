@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-        <swiper>
+        <swiper :options="swiperOption">
             <swiper-slide v-for="(page, index) of pages" :key="index">
                 <div class="icon" v-for="item of page" :key="item.id">
                     <div class="icon-img">
@@ -16,57 +16,21 @@
 <script>
     export default {
         name:'HomeIcons',
-        data(){
-            return {
-                list:[
-                    {
-                        id:'0001',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/hotel.png',
-                        content:'酒店'
-                    },
-                    {
-                        id:'0002',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/flight.png',
-                        content:'机票'
-                    },
-                    {
-                        id:'0003',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/train.png',
-                        content:'火车票'
-                    },
-                    {
-                        id:'0004',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/package.png',
-                        content:'度假'
-                    },
-                    {
-                        id:'0005',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/piao.png',
-                        content:'景点门票'
-                    },
-                    {
-                        id:'0006',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/piao.png',
-                        content:'景点门票'
-                    },
-                    {
-                        id:'0007',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/piao.png',
-                        content:'景点门票'
-                    },
-                    {
-                        id:'0008',
-                        imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/piao.png',
-                        content:'景点门票'
-                    }
-                ]
-            }
+        props:{
+            iconList:Array
         },
+    data(){
+      return{
+        swiperOption:{
+            autoplay:false
+        }
+      }
+    },
         computed:{
             // 分页，像焦点轮播图一样翻页
             pages(){
                 const pages=[];
-                this.list.forEach((item,index)=>{
+                this.iconList.forEach((item,index)=>{
                     const page=Math.floor(index/8)
                     // 如果没有子元素就创建一个空数组
                     if(!pages[page]){
