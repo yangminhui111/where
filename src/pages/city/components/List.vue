@@ -10,7 +10,7 @@
         <div class="area">
           <div class="title border-topbottom">热门城市</div>
           <div class="button-list">
-            <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+            <div class="button-wrapper" v-for="item of hotCities" :key="item.id" :ref="key">
               <div class="button">{{ item.name }}</div>
             </div>
           </div>
@@ -32,9 +32,19 @@
   </template>
 
 <script>
+import Bscroll from "better-scroll";
 export default {
     name: 'CityList',
-    props:['cities','hotCities']
+    props:['cities','hotCities','letter'],
+    watch:{
+      letter(){
+        if(this.letter){
+          const element=this.$refs[this.letter][0];
+          this.scroll=new Bscroll(this.$refs.wrapper)
+          this.scroll.scrollToElement(element)
+        }
+      }
+    }
 }
 </script>
 

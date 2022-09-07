@@ -2,8 +2,15 @@
     <div>
         <city-header></city-header>
         <city-search></city-search>
-        <city-list :hotCities="hotCities" :cities="cities"></city-list>
-        <city-alphabet :cities="cities"></city-alphabet>
+        <city-list 
+        :hotCities="hotCities" 
+        :cities="cities"
+        :letter="letter"
+        ></city-list>
+        <city-alphabet 
+        :cities="cities"
+        @change="handleLetterChange"
+        ></city-alphabet>
     </div>
 </template>
 
@@ -18,7 +25,8 @@ import axios from 'axios'
         data(){
             return {
                 cities:[],
-                hotCities:[]
+                hotCities:[],
+                letter:''
             }
         },
         components:{
@@ -40,6 +48,9 @@ import axios from 'axios'
                     this.cities=data.cities;
                     this.hotCities=data.hotCities
                 }
+            },
+            handleLetterChange(letter){
+                this.letter=letter
             }
         },
         mounted(){
