@@ -14,6 +14,7 @@
             v-for="item of list" 
             :key="item.id"
             class="item-search"
+            @click="handleCityClick(item.name)"
             >{{item.name}}</li>
             <li v-show="hasNoData" class="item-search"
             >没有找到匹配数据</li>
@@ -36,6 +37,12 @@
         props:{
             cities:Object
         },
+        methods:{
+      handleCityClick(city){
+        this.$store.commit(("changCity",city))
+        this.$router.push("/")
+      }
+    },
         computed:{
             hasNoData(){
                 return !this.list.length

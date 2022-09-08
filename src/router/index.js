@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../pages/home/HomeView.vue";
 import CityView from "../pages/city/CityView.vue";
+import DetailView from '../pages/detail/DetailView.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/city",
     name: "City",
     component: CityView
+  },
+  {
+    path: "/detail/:id",
+    name: "Detail",
+    component: DetailView
   }
 ];
 

@@ -36,7 +36,7 @@
   .wrapper{
     width: 100%;
     height: 40%;
-    
+    padding-bottom: 30%;
   }
   .swiper-pagination{
     width: 100%;
